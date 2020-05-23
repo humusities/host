@@ -1,16 +1,12 @@
 #!/usr/bin/env node
-import path from "path";
-import { platform } from "os";
-
 import createSwarmHTTP from "./index.js";
 
 const swarmHTTP = createSwarmHTTP();
-const executablePath = path.join("resources", platform(), "bin");
 
 function cli(command, ...args) {
   const actions = {
     [undefined]: () => swarmHTTP.client(),
-    server: () => swarmHTTP.server(executablePath, args[0] || "."),
+    server: () => swarmHTTP.server(args[0] || "."),
     client: () => swarmHTTP.client(),
   };
 

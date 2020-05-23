@@ -11,6 +11,7 @@
     "test": "ls"
   },
   "dependencies": {
+    "@humusities/node-webdav": "^0.0.3",
     "crypto": "^1.0.1",
     "hyperswarm": "^2.14.0"
   },

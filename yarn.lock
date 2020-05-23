@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@humusities/node-webdav@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@humusities/node-webdav/-/node-webdav-0.0.3.tgz#aa2a3f9df91a7a2904ec12bffa30bc2bd52571f3"
+  integrity sha512-2PnhDaO0HYV9oSQwVk9+Ku4kkPRkfNH2lha4hM+zMw1e2wnY1VBaMgIy6Vn5uVcWtXnmKNebx8kKQohK8VhN9Q==
+
 "@hyperswarm/dht@^3.2.0":
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/@hyperswarm/dht/-/dht-3.6.5.tgz#a40d3b7df6e209a10accfb9446cc7580c4f10d6d"
