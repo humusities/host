@@ -2,7 +2,7 @@
 import path from "path";
 import { platform } from "os";
 
-import createSwarmHTTP from "./src/index.js";
+import createSwarmHTTP from "./index.js";
 
 const swarmHTTP = createSwarmHTTP();
 const executablePath = path.join("resources", platform(), "bin");
