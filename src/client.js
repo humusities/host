@@ -1,6 +1,7 @@
 import { EventEmitter } from "events";
 
-const peerLink = (host, port) => `http://${host}:${port}`;
+const log = console.log;
+const peerLink = ({ host, port }) => `http://${host}:${port}`;
 
 class Peers extends EventEmitter {
   constructor() {
@@ -9,7 +10,6 @@ class Peers extends EventEmitter {
   }
   add(peer) {
     this.set.add(peer);
-    console.log(peerLink(peer.host, peer.port));
     this.emit("connection", peer);
   }
   delete(peer) {
@@ -22,7 +22,9 @@ class Peers extends EventEmitter {
 }
 
 export default (swarm) => () => {
-  const peers = new Peers();
+  const peers = new Peers()
+    .on("connection", (peer) => log("connection", peerLink(peer)))
+    .on("disconnection", (peer) => log("disconnection", peerLink(peer)));
   swarm.on("connection", (_, { peer }) => peer && peers.add(peer));
   swarm.on("disconnection", (_, { peer }) => peer && peers.delete(peer));
   return peers;

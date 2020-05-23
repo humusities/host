@@ -15,9 +15,11 @@ export default (swarm) => {
     connections: Object.freeze({ ...connections }),
     on: (event, callback) => {
       callbacks[event] = [...(callbacks[event] || []), callback];
-      Object.values(connections).forEach(({ socket, details }) =>
-        callback(socket, details)
-      );
+      if (event === "connection") {
+        Object.values(connections).forEach(({ socket, details }) =>
+          callback(socket, details)
+        );
+      }
     },
   };
 };
