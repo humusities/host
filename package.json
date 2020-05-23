@@ -1,0 +1,17 @@
+{
+  "name": "host",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "HTTP Web Hosting from Home",
+  "main": "src/index.js",
+  "repository": "git@github.com:humusities/host.git",
+  "author": "Elias Rhouzlane",
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "hyperswarm": "^2.14.0"
+  },
+  "bin": {
+    "humusities": "./cli.js"
+  }
+}
