@@ -8,7 +8,7 @@
   "author": "Elias Rhouzlane",
   "license": "MIT",
   "scripts": {
-    "test": ""
+    "test": "ls"
   },
   "dependencies": {
     "crypto": "^1.0.1",
