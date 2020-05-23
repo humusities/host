@@ -16,5 +16,8 @@
   },
   "bin": {
     "humusities": "./src/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
