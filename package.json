@@ -7,11 +7,14 @@
   "repository": "git@github.com:humusities/host.git",
   "author": "Elias Rhouzlane",
   "license": "MIT",
+  "scripts": {
+    "test": ""
+  },
   "dependencies": {
     "crypto": "^1.0.1",
     "hyperswarm": "^2.14.0"
   },
   "bin": {
-    "humusities": "./cli.js"
+    "humusities": "./src/cli.js"
   }
 }
