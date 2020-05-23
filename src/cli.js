@@ -18,5 +18,5 @@ function cli(command, ...args) {
   else console.error("Error in command. Supported: ", Object.keys(actions));
 }
 
-console.log("\x1b[33m%s\x1b[0m", `Humusities/Host`);
+console.log("\x1b[33m%s\x1b[0m", `Humusities/Inhabit`);
 cli(...process.argv.slice(2));
