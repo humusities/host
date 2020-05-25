@@ -4,6 +4,13 @@ import createSwarmHTTP from "./index.js";
 const swarmHTTP = createSwarmHTTP();
 
 function cli(command, ...args) {
+  process.stdout.write("> ")
+  process.stdin.on("data", data=> {
+    const input = data.toString();
+    swarmHTTP.join(input);
+    process.stdout.write(">")
+  })
+  
   const actions = {
     [undefined]: () => swarmHTTP.client(),
     server: () => swarmHTTP.server(args[0] || "."),

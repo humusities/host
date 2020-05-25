@@ -6,10 +6,20 @@ const peerLink = ({ host, port }) => `http://${host}:${port}`;
 
 export default (swarm) => () => {
   const peers = new DictEmitter()
-    .on("add", (peer) => log("connection", peerLink(peer), peerLink(peer.interactive)))
-    .on("delete", (peer) => log("disconnection", peerLink(peer)));
+    .on("add", (peer) =>
+      log("connection", peer&& peerLink(peer), peer && peerLink(peer.interactive))
+    )
+    .on("delete", (peer) => log("disconnection", peer && peerLink(peer)));
 
-  swarm.on("connection", (_, { peer }) => {
+  swarm.on("connection", (_, details) => {
+    swarm.on("data", (data) => {
+      console.log(data.toString());
+      if (data.toString() === "close") {
+        socket.destroy();
+        details.destroy();
+      }
+    });
+    const { peer } = details;
     if (peer) {
       createInteractiveWebdav({
         inject: `<script>window.webdav="${peerLink(peer)}"</script>`,
