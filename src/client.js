@@ -7,7 +7,7 @@ const peerLink = ({ host, port }) => `http://${host}:${port}`;
 export default (swarm) => () => {
   const peers = new DictEmitter()
     .on("add", (peer) =>
-      log("connection", peer&& peerLink(peer), peer && peerLink(peer.interactive))
+      log("connection", peerLink(peer), peerLink(peer.interactive))
     )
     .on("delete", (peer) => log("disconnection", peer && peerLink(peer)));
 
