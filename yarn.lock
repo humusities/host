@@ -10,10 +10,10 @@
     acorn "^7.2.0"
     node-fetch "^2.6.0"
 
-"@humusities/interactive-webdav@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@humusities/interactive-webdav/-/interactive-webdav-0.0.3.tgz#ccf0d6d91b9d06383ff2c4fdf070f7e9564f3574"
-  integrity sha512-Fg7gKVKZ+Nf69Agz8eMXmCY0IFxZILHLTArl9WnldVqkGsK0QsOxi/er1Dxju84JyS3soTFxRh1s3kCOzpU/6w==
+"@humusities/interactive-webdav@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@humusities/interactive-webdav/-/interactive-webdav-0.0.4.tgz#7f9d9d2ab560172636fe14294f9595ff2f8d00aa"
+  integrity sha512-mWKTlNVNeW26qAvFcVH4fKrkDXgyRfn/TDQdKxtcT9/83iOKiauf2goZo37DoxGPskm642n50DR3mPqA+e3QbA==
   dependencies:
     "@eliaspourquoi/heritage" "^0.1.9"
     esdev "^0.1.1"

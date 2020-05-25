@@ -2,12 +2,12 @@ import DictEmitter from "./utils/dict-emitter.js";
 import createInteractiveWebdav from "@humusities/interactive-webdav";
 
 const log = console.log;
-const peerLink = ({ host, port }) => `http://${host}:${port}`;
+const peerLink = ({ host = "localhost", port }) => `http://${host}:${port}`;
 
 export default (swarm) => () => {
   const peers = new DictEmitter()
     .on("add", (peer) =>
-      log("connection", peerLink(peer), peerLink(peer.interactive))
+      log("connection", peerLink(peer), peerLink(peer.staticServer.address()))
     )
     .on("delete", (peer) => log("disconnection", peer && peerLink(peer)));
 
@@ -21,19 +21,21 @@ export default (swarm) => () => {
     });
     const { peer } = details;
     if (peer) {
-      createInteractiveWebdav({
-        inject: `<script>window.webdav="${peerLink(peer)}"</script>`,
-      })
-        .then(({ port }) => ({
+      Promise.resolve(
+        createInteractiveWebdav({
+          inject: `<script>window.webdav="${peerLink(peer)}"</script>`,
+        })
+      )
+        .then((staticServer) => ({
           ...peer,
-          interactive: {
-            host: "localhost",
-            port,
-          },
+          staticServer,
         }))
         .then((updatedPeer) => peers.add(peerLink(updatedPeer), updatedPeer));
     }
   });
+
+  peers.on("delete", ({ staticServer }) => staticServer.close());
+
   swarm.on("disconnection", (_, { peer }) => {
     if (peer) peers.delete(peerLink(peer));
   });
