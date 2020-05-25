@@ -1,6 +1,6 @@
 {
   "name": "@humusities/inhabit",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "type": "module",
   "description": "HTTP Web Hosting from Home",
   "main": "src/index.js",
